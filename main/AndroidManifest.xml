@@ -3,6 +3,7 @@
     package="com.example.gim_lic.logintest">
 
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.SEND_SMS"/>
 
     <uses-feature android:name="android.hardware.camera" />
 
@@ -21,8 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".SecondaryActivity" />
-        <activity android:name=".SmsMailActivity" />
-        <activity android:name=".SettingsActivity"></activity>
+        <activity android:name=".SettingsActivity" />
     </application>
 
 </manifest>

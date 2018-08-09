@@ -24,18 +24,29 @@ public class SettingsActivity extends AppCompatActivity {
         etPhone = findViewById(R.id.etPhone);
         etMail = findViewById(R.id.etMail);
 
+
         Button btnSave = findViewById(R.id.btnSave);
 
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Save();
-                SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 finish();
             }
         });
+
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        String mail = sp.getString("mail","");
+        String phone = sp.getString("phone","");
+
+        if(!mail.equals("")||!phone.equals("")){
+
+            etMail.setText(mail);
+            etPhone.setText(phone);
+        }
     }
     private void Save(){
+
         String mail = etMail.getText().toString();
         String phone = etPhone.getText().toString();
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
