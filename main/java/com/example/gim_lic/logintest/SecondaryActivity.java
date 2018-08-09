@@ -2,12 +2,15 @@ package com.example.gim_lic.logintest;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Camera;
 import android.hardware.camera2.CameraCharacteristics;
 import android.hardware.camera2.CameraDevice;
 import android.hardware.camera2.CameraManager;
 import android.media.CameraProfile;
+import android.net.Uri;
 import android.os.Build;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telecom.VideoProfile;
@@ -61,7 +64,10 @@ public class SecondaryActivity extends AppCompatActivity {
         btnSms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                String phone = sp.getString("phone","");
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("sms"+phone));
+                startActivity(intent);
             }
         });
     }
